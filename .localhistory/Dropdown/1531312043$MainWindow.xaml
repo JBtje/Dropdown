@@ -1,0 +1,25 @@
+﻿<Window x:Class="Dropdown.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Dropdown"
+        xmlns:ViewModel="clr-namespace:Dropdown.ViewModel"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{local:Get Type=ViewModel:MainViewModel, IsDesignTimeCreatable=True}">
+    <Grid>
+
+        <ComboBox Name="Patient" Padding="5" Height="50" Width="400"
+                          ItemsSource="{Binding Source={StaticResource GroupedData}}"
+                          ItemTemplate="{StaticResource ItemTemplate}"
+                          SelectedItem="{Binding Path=PatientModel}">
+            <!--adorners:Watermark.Text="{l:Static p:Resources.Watermark_Select_A_Patient}"-->
+            <ComboBox.GroupStyle>
+                <GroupStyle ContainerStyle="{StaticResource ContainerStyle}"
+                                    HeaderTemplate="{StaticResource GroupHeader}"/>
+            </ComboBox.GroupStyle>
+        </ComboBox>
+
+    </Grid>
+</Window>
